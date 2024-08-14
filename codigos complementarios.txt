@@ -1,0 +1,43 @@
+____________________________________________ INDEX ____________________________________________
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("alimentoForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Previene el comportamiento por defecto del formulario
+
+        // Obtener los valores de los campos del formulario
+        const id = document.getElementById("id").value;
+        const nombre = document.getElementById("nombre").value;
+        const descripcion = document.getElementById("descripcion").value;
+        const foto = document.getElementById("foto").value;
+        const precio = document.getElementById("precio").value;
+        const categoria = document.getElementById("categoria").value;
+
+        // Validar los campos (puedes agregar más validaciones si es necesario)
+        if (!id || !nombre || !descripcion || !foto || !precio || !categoria) {
+            alert("Por favor, complete todos los campos.");
+            return;
+        }
+
+        // Crear un objeto con los datos del alimento
+        const alimento = {
+            id: id,
+            nombre: nombre,
+            descripcion: descripcion,
+            foto: foto,
+            precio: precio,
+            categoria: categoria
+        };
+
+        // Aquí puedes enviar los datos a un servidor usando fetch o XMLHttpRequest
+        console.log("Alimento registrado:", alimento);
+        alert("Alimento registrado con éxito!");
+
+        // Limpiar el formulario
+        document.getElementById("alimentoForm").reset();
+
+        // Llamar a la función validarUsuario
+        validarUsuario();
+    });
+});
+
+
+
