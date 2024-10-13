@@ -1,0 +1,150 @@
+<div id="divDetalleSucursal" class="row justify-content-center text-center mt-2 custom-card">
+    <h3 class="text-title">Gestión de Sucursales</h3>
+    <div class="col-12">
+        <div class="card custom-card">
+            <div class="card-header custom-card-header text-center">
+                <span class="h4">Detalle de la Sucursal</span>
+                <button class="btn btn-outline-danger float-end"
+                onclick="sm.setDetalleSucursalVisible(false);">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-2 mb-4">
+                        <div class="form-floating">
+                            <input id="txtIdSucursal" type="text" name="name" class="form-control" placeholder="ID" readonly />
+                            <label for="txtIdSucursal" class="form-label">ID Sucursal</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-4">
+                        <div class="form-floating">
+                            <input id="txtNombreSucursal" type="text" name="name" class="form-control" placeholder="Nombre de la sucursal:">
+                            <label for="txtNombreSucursal" class="form-label">Nombre de la sucursal:</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-floating">
+                            <input id="txtDireccionSucursal" type="text" name="name" class="form-control" placeholder="Dirección:">
+                            <label for="txtDireccionSucursal" class="form-label">Dirección</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-floating">
+                            <input id="txtTelefonoSucursal" type="text" class="form-control" placeholder="Teléfono:">
+                            <label for="txtTelefonoSucursal" class="form-label">Teléfono:</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nuevos campos (GPS, Foto, URL, Horarios) -->
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <div class="form-floating">
+                            <input id="txtGPSLatitud" type="text" class="form-control" placeholder="Latitud:">
+                            <label for="txtGPSLatitud" class="form-label">Latitud:</label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating">
+                            <input id="txtGPSLongitud" type="text" class="form-control" placeholder="Longitud:">
+                            <label for="txtGPSLongitud" class="form-label">Longitud:</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <div class="form-floating">
+                            <input id="txtFotoSucursal" type="text" class="form-control" placeholder="Foto URL:">
+                            <label for="txtFotoSucursal" class="form-label">Foto URL:</label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating">
+                            <input id="txtURL" type="text" class="form-control" placeholder="Página web URL:">
+                            <label for="txtURL" class="form-label">Página web URL:</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <input id="txtHorarios" type="text" class="form-control" placeholder="Horarios:">
+                            <label for="txtHorarios" class="form-label">Horarios:</label>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin de nuevos campos -->
+
+                <div class="row">
+                    <div class="col-12 mx-auto">
+                        <div class="btn-group m-2" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-primary" onclick="sm.guardar();">
+                                <i class="fas fa-save me-2"></i> Guardar
+                            </button>
+                        </div>
+                        <div class="btn-group col-1 m-2" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-danger" onclick="sm.eliminar();">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </button>
+                        </div>
+                        <div class="btn-group col-1 m-2" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-success" onclick="sm.limpiar();">
+                                <i class="fas fa-broom"></i> Limpiar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divCatalogoSucursales" class="row mt-2">
+    <div class="col-12">
+        <div class="card custom-card">
+            <div class="card-header custom-card-header">
+                <span class="h3">Catálogo de Sucursales</span>
+                
+                <!-- Contenedor para los botones de búsqueda y nuevo -->
+                <div class="float-end">
+                    <!-- Input de búsqueda por nombre -->
+                    <div class="input-group me-2" style="display: inline-flex; width: auto;">
+                        <input type="text" id="inputBuscarSucursal" class="form-control" placeholder="Buscar por nombre">
+                        <button class="btn btn-outline-primary" onclick="sm.buscarSucursalPorNombre();">
+                            <i class="fas fa-search"></i> Buscar
+                        </button>
+                    </div>
+
+                    <!-- Botón Nuevo -->
+                    <button class="btn btn-outline-success float-end" onclick="sm.mostrarFormularioNuevo();">
+                        <i class="fas fa-plus me-2"></i> Nuevo
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Dirección</th>
+                                        <th>Teléfono</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodySucursales"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

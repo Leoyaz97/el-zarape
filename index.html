@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>Iniciio - Gesti&oacute;n de Modulos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style/bootstrap/css/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="style/bootstrap/css/bootstrap-utilities.min.css">
+        <link rel="stylesheet" href="style/sweetalert2/sweetalert2.min.css">
+        <link href="style/estilosec.css" rel="stylesheet" type="text/css"/>
+        <!-- Estilos dentro del Login -->
+        <style>
+            .navbar {
+                background-color: #C60000;
+            }
+            
+            body {
+                background-color: #f3ddc2; /* Fondo claro */
+                background-image: url("img/zarape.jpg "); /* Ruta a tu imagen de fondo */
+                background-size: cover; /* Hace que la imagen cubra todo el fondo */
+                background-repeat: no-repeat; /* Evita que la imagen se repita */
+                background-position: center center; /* Centra la imagen en la pantalla */
+            }
+
+            h1 {
+                font-family: 'Cinzel', serif; /* Fuente elegante */
+                color: #343a40;
+            }
+
+            .card {
+                background-color: rgba(255, 255, 255, 0.85); /* Fondo blanco con transparencia */
+            }
+
+            .card-header {
+                background-color: #C60000;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+
+            .card-body {
+                padding: 2rem;
+            }
+
+            .btn-primary {
+                background-color: #007bff;
+                border-color: #007bff;
+                transition: background-color 0.3s ease;
+            }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+            
+            img {
+                border-radius: 10px;
+            }
+
+        </style>
+    </head>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark shadow">
+        <div class="container-fluid"></div>
+    </nav>
+    
+    <br> 
+
+    <body class="text-body bg-light">
+        <div class="container">
+            <div class="row justify-content-center mt-5">
+                <h1 class="text-center mb-4" style="color: white;">Bienvenido al Zarape</h1>
+                <div class="col-md-6 col-lg-4 text-center">
+                    <img src="style/zarape.jpeg" alt="El Zarape" class="img-fluid img-thumbnail mb-3" style="width: 200px;">
+                    <div class="card shadow">
+                        <div class="card-header text-white" style="background-color: #C60000;">
+                            <h4 class="mb-0">Datos de Acceso</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="txtUsuario">Usuario:</label>
+                                <input id="txtUsuario" type="text" class="form-control" placeholder="Ingrese su usuario">
+                            </div><br>
+                            <div class="form-group">
+                                <label for="txtpass">Contraseña:</label>
+                                <input id="txtpass" type="password" class="form-control" placeholder="Ingrese su contraseña">
+                            </div><br>
+                            <div class="text-center">
+                                <button class="btn btn-primary btn-block" onclick="validarUsuario();">Ingresar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><br><br><br><br>
+        
+        <footer>
+        <div class="text-center p-4" style="background-color: rgba(255, 255, 255, 0.58);">
+            @Copyright (Derechos reservados 2024):   
+            <a class="text-reset fw-bold" href="https://www.instagram.com/leoncastalv?igsh=MW03NHlyc3dlM3hpeg==">@indexcorp</a>
+        </div>
+    </footer>
+        
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="js/login.js"></script>
+    </body>
+</html>

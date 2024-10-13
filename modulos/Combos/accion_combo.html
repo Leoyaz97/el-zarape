@@ -1,0 +1,110 @@
+<!-- Gestion de Combos -->
+<div id="divDetalleCombo" class="row justify-content-center text-center mt-2 custom-card" style="display:none;">
+    <h3 class="text-title">Gestión de Combos</h3>
+    <div class="col-12">
+        <div class="card custom-card">
+            <div class="card-header custom-card-header text-center">
+                <span class="h4">Detalle del Combo</span>
+                <button class="btn btn-outline-danger float-end" onclick="cc.setDetalleComboVisible(false);">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+                <div class="row">
+                    <div class="col-2 mb-4">
+                        <div class="form-floating">
+                            <input id="txtComboId" type="text" name="name" class="form-control" placeholder="ID" readonly />
+                            <label for="txtComboId" class="form-label">Id Combo</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-4">
+                        <div class="form-floating">
+                            <input id="txtComboNombre" type="text" name="name" class="form-control" placeholder="Nombre del Combo">
+                            <label for="txtComboNombre" class="form-label">Nombre del Combo:</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-floating">
+                            <input id="txtComboPrecio" type="number" class="form-control" placeholder="Precio: $" />
+                            <label for="txtComboPrecio" class="form-label">Precio:</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5 mt-2 m-4">
+                        <div class="form-floating">
+                            <select id="cmbComboAlimentos" class="form-select" aria-label="Default select example"></select>
+                            <label class="form-label">Alimentos</label>
+                        </div>
+                    </div>
+                    <div class="col-5 mt-2 m-4">
+                        <div class="form-floating">
+                            <select id="cmbComboBebidas" class="form-select" aria-label="Default select example"></select>
+                            <label class="form-label">Bebidas</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mx-auto">
+                        <div class="btn-group m-2" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-primary" onclick="cc.guardarCombo();">
+                                <i class="fas fa-save me-2"></i> Guardar
+                            </button>
+                        </div>
+                        <div class="btn-group col-1 m-2" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-success" onclick="cc.limpiarCombo();">
+                                <i class="fas fa-broom"></i> Limpiar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divCatalogoCombo" class="row mt-2">
+    <div class="col-12">
+        <div class="card custom-card">
+            <div class="card-header custom-card-header">
+                <span class="h3">Catálogo de Combos</span>
+                
+                <div class="float-end">
+                    <div class="input-group me-2" style="display: inline-flex; width: auto;">
+                        <input type="text" id="inputBuscarCombo" class="form-control" placeholder="Buscar por nombre">
+                        <button class="btn btn-outline-primary" onclick="cc.buscarComboPorNombre();">
+                            <i class="fas fa-search"></i> Buscar
+                        </button>
+                    </div>
+
+                    <button class="btn btn-outline-success float-end" onclick="cc.mostrarFormularioNuevo();">
+                        <i class="fas fa-plus me-2"></i> Nuevo
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Alimentos</th>
+                                        <th>Bebidas</th>
+                                        <th>Precio</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyCombos"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="/web/js/modulos/combo.js"></script>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>El Zarape - Gestión</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style/bootstrap/css/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="style/bootstrap/css/bootstrap-utilities.min.css">
+        <link rel="stylesheet" href="style/fontawesome-free-6.4.0-web/css/all.min.css">
+        <link rel="stylesheet" href="style/sweetalert2/sweetalert2.min.css">
+        <link rel="stylesheet" href="style/estilosec.css">
+
+        <style>
+            .navbar {
+                background-color: #C60000;
+            }
+
+            /* Estilo para el mensaje de fondo */
+            .background-message {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                color: rgb(0, 0, 0);
+                opacity: 0.3; /* Opacidad del 20% */
+                z-index: -1;
+            }
+
+            .background-message h1 {
+                font-size: 48px; /* Tamaño de letras grandes */
+                margin: 0;
+            }
+
+            .background-message p {
+                font-size: 24px; /* Tamaño de letras pequeñas */
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body style=" background-color: #f3ddc2;">
+        
+        <nav class="navbar navbar-expand-lg navbar-dark shadow">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="principal.html">El Zarape</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item ms-4">
+                            <a class="nav-link" href="#" onclick="cargarmoduloAlimentos();">Alimentos</a>
+                        </li>
+                        <li class="nav-item ms-4">
+                            <a class="nav-link" href="#" onclick="cargarmoduloBebidas();">Bebidas</a>
+                        </li>
+                        <li class="nav-item ms-4">
+                            <a class="nav-link" href="#" onclick="cargarmoduloCombos();">Combos</a>
+                        </li>
+                        <li class="nav-item ms-4">
+                            <a class="nav-link" href="#" onclick="cargarmoduloEmpleado();">Empleados / Usuarios</a>
+                        </li>
+                        <li class="nav-item ms-4">
+                            <a class="nav-link" href="#" onclick="cargarmoduloSucursales();">Sucursales</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="btn btn-danger" href="index.html">Cerrar sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav><br>
+        
+
+        <div id="contenedorPrincipal" class="container-fluid">
+            <!-- Mensaje de fondo -->
+            <div class="background-message">
+                <h1>¡Bienvenido! </h1>
+                <h2>Seleccione un módulo a editar</h2>
+                <h3>__________________________________</h3>
+                <p>Seleccione un módulo para editarlo, tiene las funcionalidades de "Agregar, eliminar, modificar y buscar". Seleccione con el mouse y de click al módulo que desea gestionar.</p>
+            </div>
+        </div>
+        
+        <script src="style/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="style/fontawesome-free-6.4.0-web/js/all.min.js"></script>
+        <script src="style/sweetalert2/sweetalert2.all.min.js"></script>
+        <script src="js/principal.js"></script>
+    </body>
+</html>

@@ -1,0 +1,121 @@
+<div id="divDetalleBebida" class="row justify-content-center text-center mt-2 custom-card">
+    <h3 class="text-title">Gestión de Bebidas</h3>
+    <div class="col-12">
+        <div class="card custom-card">
+            <div class="card-header custom-card-header text-center">
+                <span class="h4">Detalle de la Bebida</span>
+                <button class="btn btn-outline-danger float-end"
+                        onclick="bm.setDetalleBebidaVisible(false);">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-2 mb-4">
+                        <div class="form-floating">
+                            <input id="txtBebidaId" type="text" name="name" class="form-control" placeholder="ID" readonly />
+                            <label for="txtBebidaId" class="form-label">Id bebida</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-4 ">
+                        <div class="form-floating">
+                            <input id="txtBebida" type="text" name="name" class="form-control" placeholder="Nombre de bebida:">
+                            <label for="txtBebida" class="form-label">Nombre de la bebida:</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-floating">
+                            <input id="txtDescripcionBebida" type="text" name="name" class="form-control" placeholder="Descripción:">
+                            <label for="txtDescripcionBebida" class="form-label">Descripción</label>
+                        </div>
+                    </div>
+                    <div class="col-4 ">
+                        <div class="form-floating">
+                            <input id="txtPrecioBebida" type="text" class="form-control" placeholder="Precio: $" />
+                            <label for="txtPrecioBebida" class="form-label">Precio:</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5 mt-2 m-4">
+                        <div class="form-floating">
+                            <select id="cmbCategoriaBebida" class="form-select" aria-label="Default select example"></select>
+                            <label class="form-label">Categoria</label>
+                        </div>
+                    </div>
+                    <div class="col-6 mt-2 m-3">
+                        <label class="form-label">Foto</label>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="inputGroupFile02">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mx-auto">
+                        <div class="btn-group m-2" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-primary" onclick="bm.guardar();">
+                                <i class="fas fa-save me-2"></i> Guardar
+                            </button>
+                        </div>
+                        <div class="btn-group col-1 m-2" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-danger" onclick="bm.eliminar();">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </button>
+                        </div>
+                        <div class="btn-group col-1 m-2" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-success" onclick="bm.limpiar();">
+                                <i class="fas fa-broom"></i> Limpiar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divCatalogoBebidas" class="row mt-2">
+    <div class="col-12">
+        <div class="card custom-card">
+            <div class="card-header custom-card-header">
+                <span class="h3">Catálogo de Bebidas</span>
+                
+                <!-- Contenedor para los botones de búsqueda y nuevo -->
+                <div class="float-end">
+                    <!-- Input de búsqueda por nombre -->
+                    <div class="input-group me-2" style="display: inline-flex; width: auto;">
+                        <input type="text" id="inputBuscarBebida" class="form-control" placeholder="Buscar por nombre">
+                        <button class="btn btn-outline-primary" onclick="bm.buscarBebidaPorNombre();">
+                            <i class="fas fa-search"></i> Buscar
+                        </button>
+                    </div>
+
+                <!-- Botón Nuevo -->
+                <button class="btn btn-outline-success float-end" onclick="bm.mostrarFormularioNuevo();">
+                    <i class="fas fa-plus me-2"></i> Nuevo
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Categoría</th>
+                                        <th>Precio</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyBebidas"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
