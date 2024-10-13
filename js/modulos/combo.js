@@ -17,9 +17,6 @@ let combos = [
     { id: 4, nombre: "Combo Tacos y Agua de Jamaica", descripcion: "Tres tacos de pastor acompañados de una refrescante Agua de Jamaica.", alimentos: [4], bebidas: [3], precio: 130.00 }
 ];
 
-// Nota: Asegúrate de que los IDs de los alimentos y bebidas coincidan con los que tengas en tus arrays de `alimentos` y `bebidas`.
-
-
 export function inicializarModulo() {
     setDetalleComboVisible(false);
     llenarComboBoxAlimentos();
@@ -27,9 +24,7 @@ export function inicializarModulo() {
     llenarTablaCombos();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    inicializarModulo();
-});
+document.addEventListener('DOMContentLoaded', inicializarModulo);
 
 export function guardarCombo() {
     let posTemp = -1;
@@ -41,6 +36,12 @@ export function guardarCombo() {
     combo.alimentos = Array.from(document.getElementById("cmbComboAlimentos").selectedOptions).map(option => parseInt(option.value));
     combo.bebidas = Array.from(document.getElementById("cmbComboBebidas").selectedOptions).map(option => parseInt(option.value));
     combo.precio = parseFloat(document.getElementById("txtComboPrecio").value);
+
+    // Validación de campos obligatorios
+    if (!combo.nombre || !combo.alimentos.length || !combo.bebidas.length || isNaN(combo.precio)) {
+        Swal.fire('Error', 'Por favor, llena todos los campos obligatorios.', 'error');
+        return;
+    }
 
     posTemp = buscarPosicionComboPorID(parseInt(document.getElementById("txtComboId").value));
     if (posTemp >= 0) {
@@ -61,8 +62,14 @@ export function limpiarCombo() {
     document.getElementById("txtComboNombre").value = '';
     document.getElementById("txtDescripcionCombo").value = ''; // Limpiar descripcion
     document.getElementById("txtComboPrecio").value = '';
-    document.getElementById("cmbComboAlimentos").value = '';
-    document.getElementById("cmbComboBebidas").value = '';
+
+    // Limpiar selectores múltiples
+    Array.from(document.getElementById("cmbComboAlimentos").options).forEach(option => {
+        option.selected = false;
+    });
+    Array.from(document.getElementById("cmbComboBebidas").options).forEach(option => {
+        option.selected = false;
+    });
 }
 
 export function buscarPosicionComboPorID(id) {
@@ -106,8 +113,22 @@ export function llenarTablaCombos() {
         let columnaPrecio = document.createElement("td");
 
         columnaNombre.textContent = combo.nombre;
-        columnaAlimentos.textContent = combo.alimentos.map(id => alimentos.find(a => a.id === id).nombre).join(", ");
-        columnaBebidas.textContent = combo.bebidas.map(id => bebidas.find(b => b.id === id).nombre).join(", ");
+
+        // Manejo de casos en que no se encuentran alimentos o bebidas
+        columnaAlimentos.textContent = combo.alimentos
+            .map(id => {
+                let alimento = alimentos.find(a => a.id === id);
+                return alimento ? alimento.nombre : "No encontrado";
+            })
+            .join(", ");
+
+        columnaBebidas.textContent = combo.bebidas
+            .map(id => {
+                let bebida = bebidas.find(b => b.id === id);
+                return bebida ? bebida.nombre : "No encontrado";
+            })
+            .join(", ");
+
         columnaPrecio.textContent = `$${combo.precio.toFixed(2)}`;
 
         fila.appendChild(columnaNombre);
@@ -140,12 +161,19 @@ export function editarCombo(id) {
         document.getElementById("txtComboId").value = combo.id;
         document.getElementById("txtComboNombre").value = combo.nombre;
         document.getElementById("txtComboPrecio").value = combo.precio;
-        
+
+        // Para el selector múltiple de alimentos
         let cmbAlimentos = document.getElementById("cmbComboAlimentos");
+        Array.from(cmbAlimentos.options).forEach(option => {
+            option.selected = combo.alimentos.includes(parseInt(option.value));
+        });
+
+        // Para el selector múltiple de bebidas
         let cmbBebidas = document.getElementById("cmbComboBebidas");
-        
-        cmbAlimentos.value = combo.alimentos.join(',');
-        cmbBebidas.value = combo.bebidas.join(',');
+        Array.from(cmbBebidas.options).forEach(option => {
+            option.selected = combo.bebidas.includes(parseInt(option.value));
+        });
+
         setDetalleComboVisible(true);
     }
 }
@@ -178,52 +206,4 @@ export function setDetalleComboVisible(valor) {
         document.getElementById('divDetalleCombo').style.display = 'none';
         document.getElementById('divCatalogoCombo').style.display = '';
     }
-}
-
-export function buscarComboPorNombre() {
-    let nombreBuscado = document.getElementById("inputBuscarCombo").value.trim().toLowerCase();
-    let tbody = document.getElementById("tbodyCombos");
-    tbody.innerHTML = '';
-
-    let combosFiltrados = combos.filter(combo => combo.nombre.toLowerCase().includes(nombreBuscado));
-
-    combosFiltrados.forEach(combo => {
-        let fila = document.createElement("tr");
-        let columnaNombre = document.createElement("td");
-        let columnaAlimentos = document.createElement("td");
-        let columnaBebidas = document.createElement("td");
-        let columnaPrecio = document.createElement("td");
-
-        columnaNombre.textContent = combo.nombre;
-        columnaAlimentos.textContent = combo.alimentos.map(id => alimentos.find(a => a.id === id).nombre).join(", ");
-        columnaBebidas.textContent = combo.bebidas.map(id => bebidas.find(b => b.id === id).nombre).join(", ");
-        columnaPrecio.textContent = `$${combo.precio.toFixed(2)}`;
-
-        fila.appendChild(columnaNombre);
-        fila.appendChild(columnaAlimentos);
-        fila.appendChild(columnaBebidas);
-        fila.appendChild(columnaPrecio);
-
-        let columnaBotones = document.createElement("td");
-        let botonEditar = document.createElement("button");
-        botonEditar.className = "btn btn-outline-warning";
-        botonEditar.innerHTML = '<i class="fas fa-edit"></i>';
-        botonEditar.onclick = () => editarCombo(combo.id);
-
-        let botonEliminar = document.createElement("button");
-        botonEliminar.className = "btn btn-outline-danger ms-2";
-        botonEliminar.innerHTML = '<i class="fas fa-trash"></i>';
-        botonEliminar.onclick = () => eliminarCombo(combo.id);
-
-        columnaBotones.appendChild(botonEditar);
-        columnaBotones.appendChild(botonEliminar);
-        fila.appendChild(columnaBotones);
-
-        tbody.appendChild(fila);
-    });
-}
-
-export function mostrarFormularioNuevo() {
-    limpiarCombo();
-    setDetalleComboVisible(true);
 }
